@@ -7,6 +7,7 @@ const ResumeJobAnalysisPage = () => {
   const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   const handleAnalysis = async (file, jobDescription) => {
     const formData = new FormData();
@@ -19,7 +20,7 @@ const ResumeJobAnalysisPage = () => {
 
     try {
       // Always use comprehensive analysis
-      const res = await fetch(`http://localhost:5000/analyze`, {
+      const res = await fetch(`${API_URL}/analyze`, {
         method: 'POST',
         body: formData,
       });

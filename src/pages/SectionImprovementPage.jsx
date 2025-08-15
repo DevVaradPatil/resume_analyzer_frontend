@@ -20,6 +20,7 @@ const SectionImprovementPage = () => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [copiedText, setCopiedText] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   const sectionTypes = [
     {
@@ -78,7 +79,7 @@ const SectionImprovementPage = () => {
     setResult(null);
 
     try {
-      const response = await fetch("http://localhost:5000/improve-section", {
+      const response = await fetch(`${API_URL}/improve-section`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

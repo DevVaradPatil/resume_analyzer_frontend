@@ -7,6 +7,7 @@ const ResumeAnalytics = () => {
   const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   const handleAnalysis = async (file) => {
     const formData = new FormData();
@@ -17,7 +18,7 @@ const ResumeAnalytics = () => {
     setResult(null);
 
     try {
-      const res = await fetch(`http://localhost:5000/analyze-overall`, {
+      const res = await fetch(`${API_URL}/analyze-overall`, {
         method: 'POST',
         body: formData,
       });
